@@ -1,0 +1,25 @@
+#!/bin/sh
+HISTFILE="$HOME/.cache/zsh/history"
+HISTSIZE=1000000
+SAVEHIST=1000000
+export PATH="$HOME/.local/bin":$PATH
+export PATH="$HOME/.local/share/bob/nvim-bin":$PATH
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.local/share/go/bin:$PATH
+export GOPATH=$HOME/.local/share/go:$PATH
+export PATH=$HOME/.miniconda/bin:$PATH
+export PATH=/usr/bin/python3:$PATH
+export PATH=$HOME/.zsh/usr_scripts:$PATH
+export NVM_DIR="$HOME/.nvm"
+eval "$(zoxide init zsh)"
+# eval "`pip completion --zsh`"
+#
+export EDITOR= "nvim"
+export TERMINAL="kitty"
+export VISUAL="nvim"
+export SUDOEDIT="nvim"
+export PAGER= "bat"
+export BROWSER="firefox"
+# export BROWSER="/mnt/wslg/distro/home/Vedant/.local/bin/chrome"

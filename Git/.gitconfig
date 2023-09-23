@@ -1,0 +1,17 @@
+[user]
+	email = vsghodekar1@gmail.com
+	name = TheAimHero
+
+[core]
+  editor = nvim
+
+[diff]
+  tool = git diff | \\nvim -R -c 'set ft=diff' -c 'set noma'
+
+[merge]
+	tool = nivm -c "DiffviewOpen"
+
+[pager]
+	show =  git diff | \\nvim -R -c 'set ft=diff' -c 'set noma'
+  diff  = git diff | \\nvim -R -c 'set ft=diff' -c 'set noma'
+  

@@ -1,0 +1,49 @@
+#!/bin/sh
+
+# Colorize grep output (good for log files)
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# confirm before overwriting something
+alias cp="cp -i"
+alias mv='mv -i'
+alias rm='rm -i'
+
+# Diffrent neovim configs
+alias vi='nvim --noplugins --cmd "colorscheme habamax"'
+
+
+#lsd remaps
+alias l='ls -l --color=auto'
+alias la='ls -a --color=auto'
+alias lla='ls -la --color=auto'
+alias lt='ls --tree'
+alias ls='lsd'
+
+# tmux fix for Unicode characters
+alias tmux='tmux -u'
+
+# git alias
+alias gcl='git clone'
+alias ga='git add'
+alias gall='git add --all'
+alias gb='git branch'
+alias gc='git commit -v'
+alias gci='git commit --interactive'
+alias gcl='git clone'
+alias gco='git checkout'
+alias gdel='git branch -D'
+alias gl='git pull'
+alias gll='git log --graph --pretty=oneline --abbrev-commit'
+alias gm='git merge'
+alias gp='git push'
+alias gpo='git push origin'
+alias gs='git status'
+alias gss='git status -s'
+alias gup='git fetch && git rebase'
+
+# quality remaps
+alias xx='exit'
+alias cd='z'
+alias clr='clear'

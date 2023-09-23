@@ -1,0 +1,16 @@
+**/ranger/plugins/
+
+Xmonad/.xmonad/xmonad-x86_64-linux 
+Xmonad/.xmonad/build-x86_64-linux/
+
+Lunarvim/**/lazy-lock.*
+Lunarvim/**/.luarc.json
+
+Neovim/**/lazy-lock.*
+Neovim/**/.luarc.json
+Neovim/**/spell/
+Neovim/**/neorg/neorg_workspaces.lua
+Neovim/**/plugins/local/
+
+Tmux/**/.tmux_local.conf
+Zsh/**/zsh-local
