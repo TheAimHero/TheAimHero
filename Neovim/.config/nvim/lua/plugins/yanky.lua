@@ -4,8 +4,6 @@ return {
 		{ "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank" },
 		{ "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "YankyPutAfter" },
 		{ "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "YankyPutBefore" },
-		{ "gp", "<Plug>(YankyGPutAfter)", mode = { "n", "x" }, desc = "YankyPutBefore" },
-		{ "gP", "<Plug>(YankyGPutBefore)", mode = { "n", "x" }, desc = "YankyPutBefore" },
 		{ "]r", "<Plug>(YankyCycleForward)", mode = { "n" }, desc = "YankyCycleForward" },
 		{ "[r", "<Plug>(YankyCycleBackward)", mode = { "n" }, desc = "YankyCycleBackward" },
 		{ "<leader>uy", "<cmd>Telescope yank_history<cr>", mode = "n", desc = "YankyRingHistory" },
