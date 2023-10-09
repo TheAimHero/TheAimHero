@@ -1,5 +1,7 @@
 set recolor-lightcolor rgba(0,0,0,1)
+set selection-clipboard clipboard
 set default-bg rgba(0,0,0,0.5)
 set recolor-darkcolor white
 set recolor "true"
 set guioptions none
+set selection-notification false
