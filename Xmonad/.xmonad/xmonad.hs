@@ -58,7 +58,7 @@ winType  = "#C678DD"
 myModMask = mod4Mask
 encodeCChar = map fromIntegral . B.unpack
 myFocusFollowsMouse = True
-myBorderWidth = 0
+myBorderWidth = 3
 -- myWorkspaces    = ["\61612","\61899","\61947","\61635","\61502","\61501","\61705","\61564","\62150","\61872"]
 myWorkspaces    = ["1","2","3","4","5","6","7","8","9","10"]
 --myWorkspaces    = ["I","II","III","IV","V","VI","VII","VIII","IX","X"]
@@ -85,7 +85,7 @@ myManageHook = composeAll . concat $
     ]
     where
     -- doShiftAndGo = doF . liftM2 (.) W.greedyView W.shift
-    myCFloats = ["Arandr", "Arcolinux-calamares-tool.py", "Archlinux-tweak-tool.py", "Arcolinux-welcome-app.py", "Galculator", "feh", "mpv", "Xfce4-terminal"]
+    myCFloats = ["Arandr", "Arcolinux-calamares-tool.py", "Archlinux-tweak-tool.py", "flameshot", "Arcolinux-welcome-app.py", "Galculator", "feh", "mpv", "Xfce4-terminal"]
     myTFloats = ["Downloads", "Save As...","Playlist"]
     myRFloats = []
     myIgnores = ["desktop_window"]
@@ -149,7 +149,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_p ), spawn $ "~/.xmonad/launcher/launcher.sh" )
   , ((modMask, xK_b ), spawn $ "firefox" )
   , ((modMask, xK_m ), spawn $ "vlc" )
-  , ((noModMask, xK_Print ), spawn $ "flameshot full" )
+  , ((noModMask, xK_Print ), spawn $ "flameshot full -u -p ~/Pictures/Screenshots" )
   , ((modMask, xK_t), withFocused $ windows . W.sink )
   , ((modMask, xK_h), prevWS )
   , ((modMask, xK_l), nextWS )
