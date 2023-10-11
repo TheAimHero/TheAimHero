@@ -11,6 +11,8 @@ Neovim/**/.luarc.json
 Neovim/**/spell/
 Neovim/**/neorg/neorg_workspaces.lua
 Neovim/**/plugins/local/
+Neovim/**/usage_data.json
+Neovim/**/rplugin/
 
 Tmux/**/.tmux_local.conf
 Zsh/**/zsh-local
