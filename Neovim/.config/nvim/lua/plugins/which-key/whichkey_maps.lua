@@ -2,14 +2,13 @@ local wk = require("which-key")
 wk.register({
 	e = { "<cmd>Neotree toggle<cr>", "File Browser" },
 	c = { "<cmd>Bdelete<cr>", "Close Buffer" },
-	h = { "<cmd>nohlsearch<cr>", "No Highlight" },
+	h = { "<cmd>nohlsearch<cr><cmd>Noice dismiss<cr>", "No Highlight/Notification" },
 	u = {
 		name = "Utils",
 		t = { "<cmd>TodoTrouble<cr>", "Todo Comments" },
 		d = { "<cmd>DevdocsOpen<cr>", "DevDocs" },
 		o = { "<cmd>Obsession<cr>", "Save Session" },
 		s = { "<cmd>TSJToggle<cr>", "Split/Join Toggle" },
-		q = { "<cmd>LBQuestions<cr>", "List Questions" },
 	},
 	s = {
 		name = "Search",
@@ -24,7 +23,7 @@ wk.register({
 		l = { "<cmd>Telescope live_grep<cr>", "Live Grep Workspace" },
 	},
 	T = {
-		"<cmd>Lazy load onedarkpro.nvim<cr><cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>",
+		"<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>",
 		"Themes",
 	},
 	l = {
@@ -95,4 +94,4 @@ wk.register({
 		q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
 		U = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
 	},
-}, { prefix = "<leader>", mode = "n" })
+}, { prefix = "<leader>", mode = "n", silent = true, noremap = true })

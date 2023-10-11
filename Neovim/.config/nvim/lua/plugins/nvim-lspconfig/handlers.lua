@@ -18,10 +18,7 @@ M.setup = function()
 	end
 
 	vim.diagnostic.config({
-		virtual_text = false, -- disable virtual text
-		-- signs = {
-		-- 	active = signs, -- show signs
-		-- },
+		virtual_text = false, 
 		signs = false,
 		update_in_insert = false,
 		underline = false,
@@ -35,15 +32,6 @@ M.setup = function()
 			prefix = "",
 		},
 	})
-
-	-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-	-- 	border = "single",
-	-- })
-
-	-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-	-- 	vim.lsp.handlers.signature_help,
-	-- 	{ border = "single", focusable = false, close_events = { "CursorMoved", "BufHidden", "InsertCharPre" } }
-	-- )
 end
 
 local opts = { noremap = true, silent = true }

@@ -1,8 +1,6 @@
 return {
 	"chrisgrieser/nvim-recorder",
 	event = "User FileOpened",
-	-- NOTE: Statusline icon changed manually for nerd fonts v3
-	pin = true,
 	config = function()
 		-- default values
 		require("recorder").setup({

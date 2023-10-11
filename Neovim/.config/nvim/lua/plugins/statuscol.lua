@@ -14,7 +14,6 @@ return {
 				{ text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
 				{ sign = { name = { "Marks", "Dap" }, maxwidth = 1, colwidth = 2, auto = true } },
 				{ text = { builtin.lnumfunc, " " }, condition = { true, builtin.not_empty } },
-				{ sign = { name = { "GitSigns" }, maxwidth = 1, colwidth = 2, auto = true } },
 			},
 			clickhandlers = {
 				Lnum = false,

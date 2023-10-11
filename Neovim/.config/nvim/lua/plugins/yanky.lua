@@ -6,7 +6,7 @@ return {
 		{ "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "YankyPutBefore" },
 		{ "]r", "<Plug>(YankyCycleForward)", mode = { "n" }, desc = "YankyCycleForward" },
 		{ "[r", "<Plug>(YankyCycleBackward)", mode = { "n" }, desc = "YankyCycleBackward" },
-		{ "<leader>uy", "<cmd>Telescope yank_history<cr>", mode = "n", desc = "YankyRingHistory" },
+		{ "<leader>sy", "<cmd>Telescope yank_history<cr>", mode = "n", desc = "YankyRingHistory" },
 	},
 	dependencies = { "telescope.nvim", "kkharji/sqlite.lua" },
 	config = function()

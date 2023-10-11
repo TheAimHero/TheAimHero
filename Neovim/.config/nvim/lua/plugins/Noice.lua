@@ -28,7 +28,7 @@ return {
 				view = "notify",
 				view_error = "notify",
 				view_warn = "notify",
-				wiew_history = "notify",
+				view_history = "notify",
 				view_search = "virtualtext",
 			},
 			popupmenu = { enabled = true, backend = "nui", kind_icons = {} },
