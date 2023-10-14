@@ -38,9 +38,27 @@ keymap("n", "\\a", function()
 	vim.notify(string.format("Codeium %s", codeium), "info", { title = "Codeium" })
 end, { desc = "Toggle Codeium" })
 
+local diagnostics = false
+keymap("n", "\\d", function()
+	require("lsp_lines").toggle()
+	diagnostics = not diagnostics
+	vim.notify(string.format("Lsp Lines %s", diagnostics), "info", { title = "Lsp Lines" })
+end, { desc = "Toggle Lsp Lines" })
+
+local noice = true
+keymap("n", "\\n", function()
+	if noice then
+		vim.cmd("Noice disable")
+	else
+		vim.cmd("Noice enable")
+	end
+	noice = not noice
+	vim.notify(string.format("Noice %s", noice), "info", { title = "Noice" })
+end, { desc = "Toggle Noice" })
+
 local gitsigns = true
 keymap("n", "\\g", function()
-	vim.cmd("Gitsigns toggle_signs")
+	vim.cmd("Gitsigns toggle_numhl")
 	gitsigns = not gitsigns
 	vim.notify(string.format("Gitsigns %s", gitsigns), "info", { title = "Gitsigns" })
 end, { desc = "Toggle Gitsigns" })
