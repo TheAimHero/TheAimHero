@@ -5,20 +5,9 @@ M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities = require("cmp_nvim_lsp").default_capabilities(M.capabilities)
 
 M.setup = function()
-	local signs = {
-
-		{ name = "DiagnosticSignError", text = "" },
-		{ name = "DiagnosticSignWarn", text = "" },
-		{ name = "DiagnosticSignHint", text = "" },
-		{ name = "DiagnosticSignInfo", text = "" },
-	}
-
-	for _, sign in ipairs(signs) do
-		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-	end
-
+	require("helpers.init").setup_icons()
 	vim.diagnostic.config({
-		virtual_text = false, 
+		virtual_text = false,
 		signs = false,
 		update_in_insert = false,
 		underline = false,
@@ -42,7 +31,7 @@ M.lsp_keymaps = function(bufnr)
 	keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	keymap(bufnr, "n", "gr", "<cmd>TroubleToggle lsp_references<cr>", opts)
 	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float() <cr>", opts)
-	keymap(bufnr, "i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
+	keymap(bufnr, "i", "<C-;>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
 end
 
 return M
