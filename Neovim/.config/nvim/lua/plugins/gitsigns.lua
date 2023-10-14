@@ -1,10 +1,10 @@
+local keymap = vim.keymap.set
+
 return {
 	"lewis6991/gitsigns.nvim",
 	cmd = "Gitsigns",
 	event = "User FileOpened",
 	config = function()
-		local keymap = vim.keymap.set
-		local opts = { noremap = true, silent = true }
 		require("gitsigns").setup({
 			signs = {
 				add = { text = "│" },
@@ -14,8 +14,8 @@ return {
 				changedelete = { text = "~" },
 				untracked = { text = "┆" },
 			},
-			signcolumn = true,
-			numhl = false,
+			signcolumn = false,
+			numhl = true,
 			linehl = false,
 			word_diff = false,
 			watch_gitdir = { interval = 1000, follow_files = true },
@@ -41,7 +41,17 @@ return {
 				col = 1,
 			},
 		})
-		keymap("n", "]g", "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", opts)
-		keymap("n", "[g", "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", opts)
+		keymap(
+			"n",
+			"]g",
+			"<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>",
+			{ desc = "Next Hunk", noremap = true, silent = true }
+		)
+		keymap(
+			"n",
+			"[g",
+			"<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>",
+			{ desc = "Previous Hunk", noremap = true, silent = true }
+		)
 	end,
 }
