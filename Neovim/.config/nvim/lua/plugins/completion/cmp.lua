@@ -107,7 +107,15 @@ return {
 				{ name = "nvim_lsp", priority = 10, max_item_count = 50 },
 				{ name = "neorg" },
 				{ name = "luasnip" },
-				{ name = "buffer", max_item_count = 10 },
+				{
+					name = "buffer",
+					max_item_count = 10,
+					option = {
+						get_bufnrs = function()
+							return vim.api.nvim_list_bufs()
+						end,
+					},
+				},
 				{ name = "async_path" },
 			},
 
