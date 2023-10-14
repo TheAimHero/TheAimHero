@@ -1,7 +1,13 @@
 return {
-	{ "tpope/vim-obsession" },
+	{
+		"tpope/vim-obsession",
+		event = "VeryLazy",
+	},
 
-	{ "nvim-lua/plenary.nvim" },
+	{
+		"nvim-lua/plenary.nvim",
+		lazy = true,
+	},
 
 	--General
 	{
@@ -12,8 +18,10 @@ return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "User FileOpened",
+		version = "2.*",
 		config = function()
-			vim.g.indent_blankline_filetype_exclude = { "norg", "lspinfo", "packer", "checkhealth", "help", "man", "" }
+			vim.g.indent_blankline_filetype_exclude =
+				{ "norg", "lspinfo", "packer", "checkhealth", "help", "man", "", "markdown" }
 		end,
 	},
 	{ "famiu/bufdelete.nvim", cmd = { "Bdelete" } },
@@ -33,5 +41,10 @@ return {
 		"smjonas/inc-rename.nvim",
 		cmd = "IncRename",
 		config = true,
+		init = function()
+			vim.keymap.set("n", "<leader>lr", function()
+				return ":IncRename " .. vim.fn.expand("<cword>")
+			end, { desc = "Rename symbol under cursor", expr = true })
+		end,
 	},
 }
