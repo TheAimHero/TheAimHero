@@ -9,7 +9,6 @@ Lunarvim/**/.luarc.json
 Neovim/**/lazy-lock.*
 Neovim/**/.luarc.json
 Neovim/**/spell/
-Neovim/**/neorg/neorg_workspaces.lua
 Neovim/**/plugins/local/
 Neovim/**/usage_data.json
 Neovim/**/rplugin/
