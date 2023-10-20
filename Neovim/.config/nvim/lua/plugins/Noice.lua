@@ -85,7 +85,7 @@ return {
 				hover = { enabled = true, silent = false, view = nil, opts = {} },
 				signature = {
 					enabled = true,
-					auto_open = { enabled = false, trigger = true, luasnip = true, throttle = 50 },
+					auto_open = { enabled = true, trigger = true, luasnip = true, throttle = 50 },
 					view = nil,
 					opts = {},
 				},
