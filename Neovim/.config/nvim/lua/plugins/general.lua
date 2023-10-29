@@ -29,7 +29,7 @@ return {
 		"Wansmer/treesj",
 		name = "treesj",
 		config = true,
-		opts = { max_join_length = 12000 },
+		opts = { max_join_length = 12000, use_default_keymaps = false },
 		cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
 	},
 
