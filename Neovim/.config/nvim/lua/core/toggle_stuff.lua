@@ -38,6 +38,13 @@ keymap("n", "\\a", function()
 	vim.notify(string.format("Codeium %s", codeium), "info", { title = "Codeium" })
 end, { desc = "Toggle Codeium" })
 
+local indentation = true
+keymap("n", "\\i", function()
+	vim.cmd("IndentBlanklineToggle")
+	indentation = not indentation
+	vim.notify(string.format("Indentation %s", indentation), "info", { title = "Indent Blankline" })
+end, { desc = "Toggle Indentation" })
+
 local diagnostics = false
 keymap("n", "\\d", function()
 	require("lsp_lines").toggle()
