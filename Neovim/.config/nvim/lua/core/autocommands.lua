@@ -116,6 +116,5 @@ autocmd("LspAttach", {
 		if client.server_capabilities.inlayHintProvider then
 			vim.lsp.inlay_hint(args.buf, true)
 		end
-		-- whatever other lsp config you want
 	end,
 })

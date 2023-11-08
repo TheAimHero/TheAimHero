@@ -5,7 +5,6 @@ return function()
 	require("lspconfig").clangd.setup({
 		on_attach = function(c, b)
 			c.server_capabilities.documentFormattingProvider = false
-			vim.lsp.inlay_hint(b, nil)
 			require("plugins.nvim-lspconfig.handlers").lsp_keymaps(b)
 		end,
 		capabilities = clangd_capabilities,

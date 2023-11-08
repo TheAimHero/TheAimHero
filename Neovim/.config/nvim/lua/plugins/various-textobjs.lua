@@ -5,6 +5,7 @@ return {
 		require("various-textobjs").setup({
 			useDefaultKeymaps = true,
 			lookForwardLines = 100,
+			disabledKeymaps = { "gc" },
 		})
 
 		vim.keymap.set("n", "gx", function()
