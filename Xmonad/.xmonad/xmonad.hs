@@ -126,19 +126,9 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   ----------------------------------------------------------------------
-  -- SUPER + FUNCTION KEYS
-
-  [ ((modMask, xK_F6), spawn $ "vlc --video-on-top" )
-  , ((modMask, xK_F8), spawn $ "thunar" )
-  , ((modMask, xK_F10), spawn $ "spotify" )
-
-  -- FUNCTION KEYS
-  -- , ((0, xK_F12), spawn $ "kitty --drop-down" )
-  -- , ((modMask, xK_p ), spawn $ "~/.xmonad/launcher/launcher.sh" )
-
 
   -- SUPER + KEY
-  , ((modMask, xK_q), kill )
+  [ ((modMask, xK_q), kill )
   , ((modMask, xK_v), spawn $ "pavucontrol" )
   , ((modMask, xK_semicolon), spawn $ "polybar-msg cmd toggle" )
   , ((modMask, xK_period), spawn $ "~/.xmonad/launcher/emoji.sh" )
@@ -148,12 +138,14 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_f), sendMessage $ Toggle NBFULL )
   , ((modMask, xK_p ), spawn $ "~/.xmonad/launcher/launcher.sh" )
   , ((modMask, xK_b ), spawn $ "firefox" )
-  , ((modMask, xK_m ), spawn $ "vlc" )
-  , ((noModMask, xK_Print ), spawn $ "flameshot full -u -p ~/Pictures/Screenshots" )
+  , ((modMask, xK_d ), spawn $ "discord" )
+  , ((modMask, xK_m ), spawn $ "env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify" )
+  , ((noModMask, xK_Print ), spawn $ "flameshot full -c -p ~/Pictures/Screenshots" )
   , ((modMask, xK_t), withFocused $ windows . W.sink )
   , ((modMask, xK_h), prevWS )
   , ((modMask, xK_l), nextWS )
-  , ((modMask, xK_u), spawn $ "spotify" )
+  , ((modMask, xK_u), spawn $ "rofi-bluetooth" )
+  , ((modMask, xK_n), spawn $ "~/.zsh/usr_scripts/rofi-wifi-menu" )
 
   -- SUPER + SHIFT KEYS
   , ((modMask .|. shiftMask , xK_r ), spawn $ "xmonad --recompile && xmonad --restart")
@@ -165,26 +157,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. shiftMask , xK_k ), windows  W.swapUp)
   , ((modMask .|. shiftMask , xK_l ), sendMessage  Expand)
   , ((modMask .|. shiftMask , xK_h ), sendMessage  Shrink)
-  -- CONTROL + ALT KEYS
-
-  , ((controlMask .|. mod1Mask , xK_Next ), spawn $ "conky-rotate -n")
-  , ((controlMask .|. mod1Mask , xK_Prior ), spawn $ "conky-rotate -p")
-  , ((controlMask .|. mod1Mask , xK_a ), spawn $ "xfce4-appfinder")
-  , ((controlMask .|. mod1Mask , xK_b ), spawn $ "thunar")
-  , ((controlMask .|. mod1Mask , xK_c ), spawn $ "catfish")
-  , ((controlMask .|. mod1Mask , xK_e ), spawn $ "archlinux-tweak-tool")
-  , ((controlMask .|. mod1Mask , xK_f ), spawn $ "firefox")
-  , ((controlMask .|. mod1Mask , xK_i ), spawn $ "nitrogen")
-  , ((controlMask .|. mod1Mask , xK_k ), spawn $ "archlinux-logout")
-  , ((controlMask .|. mod1Mask , xK_l ), spawn $ "archlinux-logout")
-  , ((controlMask .|. mod1Mask , xK_m ), spawn $ "xfce4-settings-manager")
-  , ((controlMask .|. mod1Mask , xK_o ), spawn $ "$HOME/.xmonad/scripts/picom-toggle.sh")
-  , ((controlMask .|. mod1Mask , xK_p ), spawn $ "pamac-manager")
-  , ((controlMask .|. mod1Mask , xK_s ), spawn $ "spotify")
-  , ((controlMask .|. mod1Mask , xK_t ), spawn $ "kitty")
-  , ((controlMask .|. mod1Mask , xK_u ), spawn $ "pavucontrol")
-  , ((controlMask .|. mod1Mask , xK_Return ), spawn $ "kitty")
-
   -- ALT + ... KEYS
 
   -- , ((mod1Mask, xK_r), spawn $ "xmonad --restart" )
