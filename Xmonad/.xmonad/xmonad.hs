@@ -161,6 +161,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- , ((mod1Mask, xK_r), spawn $ "xmonad --restart" )
 
+  , (( mod1Mask , xK_Print ), spawn $ "flameshot gui -c")
 
   --MULTIMEDIA KEYS
 
