@@ -1,9 +1,13 @@
 [user]
-	email = vsghodekar1@gmail.com
+	email = 91832491+TheAimHero@users.noreply.github.com
 	name = TheAimHero
 
 [core]
   editor = nvim
+  pager = less -FX
+
+[init]
+  defaultBranch = master
 
 [diff]
   tool = git diff | \\nvim -R -c 'set ft=diff' -c 'set noma'
@@ -15,3 +19,11 @@
 	show =  git diff | \\nvim -R -c 'set ft=diff' -c 'set noma'
   diff  = git diff | \\nvim -R -c 'set ft=diff' -c 'set noma'
   
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+[commit] 
+  verbose = true
