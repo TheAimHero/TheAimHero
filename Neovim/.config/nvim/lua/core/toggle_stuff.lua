@@ -30,9 +30,9 @@ end, { desc = "Toggle Spell" })
 local codeium = true
 keymap("n", "\\a", function()
 	if codeium then
-		vim.cmd("Codeium DisableBuffer")
+		vim.cmd("NeoCodeium disable")
 	else
-		vim.cmd("Codeium EnableBuffer")
+		vim.cmd("NeoCodeium enable")
 	end
 	codeium = not codeium
 	vim.notify(string.format("Codeium %s", codeium), "info", { title = "Codeium" })
@@ -70,12 +70,10 @@ keymap("n", "\\g", function()
 	vim.notify(string.format("Gitsigns %s", gitsigns), "info", { title = "Gitsigns" })
 end, { desc = "Toggle Gitsigns" })
 
-local inlay_hints = true
 keymap("n", "\\h", function()
-	local bufnr = vim.api.nvim_buf_get_number(vim.api.nvim_get_current_buf())
-	vim.lsp.inlay_hint(bufnr)
-	inlay_hints = not inlay_hints
-	vim.notify(string.format("Inlay Hints %s", inlay_hints), "info", { title = "Inlay Hints" })
+	local inlay_hints_state = vim.lsp.inlay_hint.is_enabled({ bufnr = vim.api.nvim_get_current_buf() })
+	vim.lsp.inlay_hint.enable(not inlay_hints_state)
+	vim.notify(string.format("Inlay Hints %s", not inlay_hints_state), "info", { title = "Inlay Hints" })
 end, { desc = "Toggle Inlay Hints" })
 
 local eyeliner = true

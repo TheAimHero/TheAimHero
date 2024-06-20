@@ -3,7 +3,6 @@ return function()
 		on_attach = function(c, b)
 			c.server_capabilities.documentFormattingProvider = false
 			require("plugins.nvim-lspconfig.handlers").lsp_keymaps(b)
-			vim.lsp.inlay_hint(b, nil)
 		end,
 		capabilities = require("plugins.nvim-lspconfig.handlers").capabilities,
 		cmd = { "lua-language-server" },

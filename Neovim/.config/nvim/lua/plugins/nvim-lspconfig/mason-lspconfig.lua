@@ -23,6 +23,7 @@ return {
 			["tailwindcss"] = require("plugins.nvim-lspconfig.setting.tailwindcss"),
 			["html"] = require("plugins.nvim-lspconfig.setting.html"),
 			["lua_ls"] = require("plugins.nvim-lspconfig.setting.lua_ls"),
+			["rust_analyzer"] = require("plugins.nvim-lspconfig.setting.rust_analyzer"),
 			["pyright"] = require("plugins.nvim-lspconfig.setting.pyright"),
 			["clangd"] = require("plugins.nvim-lspconfig.setting.clangd"),
 			["jsonls"] = require("plugins.nvim-lspconfig.setting.jsonls"),

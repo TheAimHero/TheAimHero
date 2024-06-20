@@ -3,9 +3,6 @@ return {
 	name = "catppuccin",
 	lazy = false,
 	priority = 1000,
-	init = function()
-		vim.cmd("colorscheme catppuccin-frappe")
-	end,
 	config = function()
 		require("catppuccin").setup({
 			flavour = "mocha",
@@ -16,6 +13,7 @@ return {
 			dim_inactive = { enabled = false, shade = "dark", percentage = 0.5 },
 			no_italic = false,
 			no_bold = false,
+			no_underline = false,
 			styles = {
 				comments = { "italic" },
 				conditionals = { "italic" },
@@ -37,40 +35,56 @@ return {
 					crust = "#000000",
 				},
 			},
-			custom_highlights = function(colors)
+			custom_highlights = function()
 				return {
 					LspInlayHint = { link = "Comment" },
-					Folded = { bg = "#45475b" },
+					-- Eyeliner highlight groups
 					EyelinerPrimary = { fg = "#00c7df", bold = true },
 					EyelinerSecondary = { fg = "#f84e03", bold = true },
 					EyelinerDimmed = { link = "Comment" },
+					-- Mini notify background highlight group
 					NotifyBackground = { bg = "#000000" },
+					-- Mini hipatters highlight groups
+					MiniStatuslineInactive = { bg = "none" },
+					MiniStatuslineFilename = { bg = "none" },
+					MiniHipatternsFixme = { bg = "#F38BA8", fg = "#000000", bold = true, italic = true },
+					MiniHipatternsTodo = { bg = "#89B4FA", fg = "#000000", bold = true, italic = true },
+					MiniHipatternsHack = { bg = "#89DCEB", fg = "#000000", bold = true, italic = true },
+					MiniHipatternsPerf = { bg = "#A6E3A1", fg = "#000000", bold = true, italic = true },
+					MiniHipatternsWarn = { bg = "#FAB387", fg = "#000000", bold = true, italic = true },
+					MiniHipatternsNote = { bg = "#408076", fg = "#ffffff", bold = true, italic = true },
+					MiniHipatternsTest = { bg = "#C6A0F6", fg = "#000000", bold = true, italic = true },
+					-- MiniTabline highlight groups
+					MiniTablineTabpageSection = { bg = "none" },
+					MiniTablineCurrent = {
+						bg = "none",
+						fg = "#89b4fa",
+						bold = false,
+						sp = "none",
+						italic = false,
+						underline = false,
+						cterm = { underline = false, underdashed = false },
+					},
+					-- Diffview highlight group
+					-- DiffviewDiffChange = { bg = "#45475b" },
 				}
 			end,
 			integrations = {
 				cmp = true,
-				gitsigns = true,
 				noice = true,
-				nvimtree = true,
-				telescope = true,
-				notify = true,
-				ufo = true,
+				telescope = { enabled = true, style = "nvchad" },
 				mini = true,
-				fidget = false,
-				markdown = true,
-				dap = {
-					enabled = true,
-					enable_ui = true,
-				},
 				mason = true,
-				alpha = true,
 				harpoon = true,
-				indent_blankline = { enabled = true },
 				neotree = true,
 				treesitter = true,
 				symbols_outline = true,
-				lsp_trouble = false,
+				lsp_trouble = true,
+				markdown = true,
 				which_key = true,
+				notify = true,
+				ufo = true,
+				diffview = true,
 				native_lsp = {
 					enabled = true,
 					virtual_text = {
@@ -79,18 +93,12 @@ return {
 						warnings = { "italic" },
 						information = { "italic" },
 					},
-					underlines = {
-						errors = { "underline" },
-						hints = { "underline" },
-						warnings = { "underline" },
-						information = { "underline" },
-					},
+					underlines = {},
 				},
 				-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 			},
 		})
-
 		-- setup must be called before loading
-		vim.cmd.colorscheme("catppuccin")
+		vim.cmd.colorscheme("catppuccin-frappe")
 	end,
 }

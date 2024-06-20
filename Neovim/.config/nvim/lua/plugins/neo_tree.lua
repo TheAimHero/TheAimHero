@@ -4,6 +4,7 @@ return {
 	enabled = true,
 	cmd = "Neotree",
 	event = "User DirOpened",
+	keys = { { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "File Browser" } },
 	dependencies = { "nui.nvim", "DaikyXendo/nvim-web-devicons", "plenary.nvim" },
 	config = function()
 		require("neo-tree").setup({

@@ -4,6 +4,8 @@ return {
 	event = { "User FileOpened" },
 	dependencies = "JoosepAlviste/nvim-ts-context-commentstring",
 	config = function()
+		vim.g.skip_ts_context_commentstring_module = true
+
 		require("mini.ai").setup({ silent = true })
 
 		require("mini.basics").setup({
@@ -12,8 +14,6 @@ return {
 			autocommands = { basic = false, relnum_in_visual_mode = false },
 			silent = true,
 		})
-
-		require("mini.cursorword").setup()
 
 		require("mini.comment").setup({
 			options = {

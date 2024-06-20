@@ -1,3 +1,5 @@
+local keymap = vim.keymap.set
+
 return {
 	"folke/zen-mode.nvim",
 	cmd = "ZenMode",
@@ -32,5 +34,6 @@ return {
 			on_open = function(win) end,
 			on_close = function() end,
 		})
+    keymap("n", "<leader>wj", "<cmd>ZenMode<cr>", { desc = "Zen Mode", noremap = true, silent = true })
 	end,
 }

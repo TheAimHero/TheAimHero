@@ -33,13 +33,16 @@ plug "$HOME/.zsh/zsh-exports"
 plug "$HOME/.zsh/zsh-aliases"
 plug "$HOME/.zsh/zsh-local"
 
+# completions
+plug "esc/conda-zsh-completion"
+
 # Plugins
 plug "zap-zsh/zap-prompt"
 plug "zap-zsh/vim"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "Aloxaf/fzf-tab"
-plug "kjhaber/tm.zsh"
+plug "kjhaber/tm.zsh" "d15087a2375d1bee4af1b0bebbb1348577190f03"
 plug "kutsan/zsh-system-clipboard"
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins
 # More completions https://github.com/zsh-users/zsh-completions

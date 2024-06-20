@@ -9,7 +9,7 @@ return {
 			thousands = false,
 			relculright = false,
 			ft_ignore = { "Outline", "Trouble", "neo-tree" },
-			bt_ignore = nil,
+			bt_ignore = { "nofile" },
 			segments = {
 				{ text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
 				{ sign = { name = { "Marks", "Dap" }, maxwidth = 1, colwidth = 2, auto = true } },

@@ -7,13 +7,20 @@ local keymap = vim.keymap.set
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
-keymap("n", "<C-LeftMouse>", "<Nop>", opts)
-keymap("i", "<C-LeftMouse>", "<Nop>", opts)
-vim.g.mapleader = " "
+keymap({ "i", "n" }, "<C-LeftMouse>", "<Nop>", opts)
+keymap({ "n", "i", "v" }, "<A-i>", "<Nop>", opts)
 vim.g.maplocalleader = ","
+vim.g.mapleader = " "
 
 -- Redo
 keymap("n", "U", "<C-r>", opts)
+
+-- Window manipulation
+
+keymap("n", "<leader>wo", "<cmd>only<cr>", { desc = "Only", noremap = true })
+keymap("n", "<leader>wc", "<cmd>close<cr>", { desc = "Close", noremap = true })
+keymap("n", "<leader>wv", "<cmd>vsplit<cr>", { desc = "Vertical Split", noremap = true })
+keymap("n", "<leader>wx", "<cmd>split<cr>", { desc = "Horizontal Split", noremap = true })
 
 -- Insert Mode
 keymap("i", "jk", "<ESC>", opts)

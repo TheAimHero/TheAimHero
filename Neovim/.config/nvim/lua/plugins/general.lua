@@ -1,6 +1,7 @@
 return {
 	{
 		"tpope/vim-obsession",
+		keys = { { "<leader>uo", "<cmd>Obsession<cr>", desc = "Save Session" } },
 		event = "VeryLazy",
 	},
 
@@ -17,6 +18,7 @@ return {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		enabled = true,
 		event = "User FileOpened",
 		version = "2.*",
 		config = function()
@@ -24,10 +26,15 @@ return {
 				{ "norg", "lspinfo", "packer", "checkhealth", "help", "man", "", "markdown" }
 		end,
 	},
-	{ "famiu/bufdelete.nvim", cmd = { "Bdelete" } },
+	{
+		"famiu/bufdelete.nvim",
+		cmd = { "Bdelete" },
+		keys = { { "<leader>c", "<cmd>Bdelete<cr>", desc = "Close Buffer" } },
+	},
 	{
 		"Wansmer/treesj",
 		name = "treesj",
+		keys = { { "<leader>us", "<cmd>TSJToggle<cr>", desc = "Split/Join Toggle" } },
 		config = true,
 		opts = { max_join_length = 12000, use_default_keymaps = false },
 		cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },

@@ -1,7 +1,6 @@
 return function()
 	require("lspconfig").tsserver.setup({
 		on_attach = function(c, b)
-			vim.lsp.inlay_hint(b, nil)
 			c.server_capabilities.documentFormattingProvider = false
 			require("plugins.nvim-lspconfig.handlers").lsp_keymaps(b)
 		end,
@@ -31,6 +30,5 @@ return function()
 				},
 			},
 		},
-		root_dir = require("lspconfig").util.root_pattern(".git", "index.norg"),
 	})
 end

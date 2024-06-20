@@ -1,5 +1,5 @@
 return {
-	"zoriya/auto-save.nvim",
+	"Pocco81/auto-save.nvim",
 	enabled = true,
 	event = "InsertLeave",
 	config = function()

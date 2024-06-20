@@ -31,7 +31,8 @@ autocmd("User", {
 	group = "alpha_on_empty",
 	callback = function(event)
 		local fallback_name = vim.api.nvim_buf_get_name(event.buf)
-		local fallback_ft = vim.api.nvim_buf_get_option(event.buf, "filetype")
+		local fallback_ft = vim.bo.filetype
+
 		local fallback_on_empty = fallback_name == "" and fallback_ft == ""
 		if fallback_on_empty then
 			vim.cmd("Alpha")
@@ -52,7 +53,16 @@ autocmd({ "FileType" }, {
 	end,
 })
 
--- NOTE: This is when we want to do something before closing a buffer
+autocmd("FileType", {
+	pattern = { "Outline" },
+	callback = function()
+		require("ufo").detach()
+		vim.opt_local.foldenable = false
+		vim.wo.foldcolumn = "0"
+	end,
+})
+
+-- @note: This is when we want to do something before closing a buffer
 local save_fold = augroup("Persistent Folds", { clear = true })
 autocmd("BufWinLeave", {
 	pattern = "*.*",
@@ -60,7 +70,7 @@ autocmd("BufWinLeave", {
 	group = save_fold,
 })
 
--- NOTE: This is when we want to do something after opening a buffer
+-- @note: This is when we want to do something after opening a buffer
 autocmd("BufWinEnter", {
 	pattern = "*.*",
 	callback = function() end,
@@ -113,8 +123,8 @@ autocmd("LspAttach", {
 	group = augroup("UserLspConfig", {}),
 	callback = function(args)
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		if client.server_capabilities.inlayHintProvider then
-			vim.lsp.inlay_hint(args.buf, true)
+		if client and client.server_capabilities.inlayHintProvider then
+			vim.lsp.inlay_hint.enable(true)
 		end
 	end,
 })

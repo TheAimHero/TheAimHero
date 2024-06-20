@@ -1,6 +1,6 @@
 return {
 	"luckasRanarison/nvim-devdocs",
-
+	keys = { { "<leader>ud", "<cmd>DevdocsOpen<cr>", desc = "DevDocs" } },
 	cmd = {
 		"DevdocsFetch",
 		"DevdocsInstall",
@@ -10,13 +10,11 @@ return {
 		"DevdocsUpdate",
 		"DevdocsUpdateAll",
 	},
-
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope.nvim",
 		"nvim-treesitter/nvim-treesitter",
 	},
-
 	config = function()
 		require("nvim-devdocs").setup({
 			dir_path = vim.fn.stdpath("data") .. "/devdocs", -- installation directory
