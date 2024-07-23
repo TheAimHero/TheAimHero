@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 function run {
   if ! pgrep $1 ;
@@ -7,17 +7,8 @@ function run {
   fi
 }
 
-#Set your native resolution IF it does not exist in xrandr
-#More info in the script
-#run $HOME/.xmonad/scripts/set-screen-resolution-in-virtualbox.sh
+(sleep 2; run polybar --config=$HOME/.config/polybar/config) &
 
-#Find out your monitor name with xrandr or arandr (save and you get this line)
-#xrandr --output VGA-1 --primary --mode 1360x768 --pos 0x0 --rotate normal
-#xrandr --output DP2 --primary --mode 1920x1080 --rate 60.00 --output LVDS1 --off &
-#xrandr --output LVDS1 --mode 1366x768 --output DP3 --mode 1920x1080 --right-of LVDS1
-# xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
-
-(sleep 2; run $HOME/.config/polybar/launch.sh) &
 
 #change your keyboard if you need it
 #setxkbmap -layout be
@@ -25,29 +16,8 @@ function run {
 #cursor active at boot
 xsetroot -cursor_name left_ptr &
 
-#start ArcoLinux Welcome App
-run dex $HOME/.config/autostart/arcolinux-welcome-app.desktop
-
 #starting utility applications at boot time
 run variety &
-run pamac-tray &
-run xfce4-power-manager &
 run dunst &
 numlockx on &
 picom --config $HOME/.xmonad/scripts/picom.conf &
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
-#starting user applications at boot time
-#nitrogen --restore &
-#run caffeine &
-#run vivaldi-stable &
-#run firefox &
-#run thunar &
-#run spotify &
-#run atom &
-
-#run telegram-desktop &
-#run discord &
-#run dropbox &
-#run insync start &
-#run ckb-next -b &

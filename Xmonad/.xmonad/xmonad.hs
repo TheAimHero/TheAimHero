@@ -40,7 +40,7 @@ import qualified DBus.Client as D
 
 
 myStartupHook = do
-    spawn "$HOME/.xmonad/scripts/autostart.sh"
+    spawn "~/.xmonad/scripts/autostart.sh"
     setWMName "Xmonad"
 
 -- colours
@@ -50,18 +50,11 @@ fore     = "#DEE3E0"
 back     = "#282C34"
 winType  = "#C678DD"
 
---mod4Mask= super key
---mod1Mask= alt key
---controlMask= ctrl key
---shiftMask= shift key
-
 myModMask = mod4Mask
 encodeCChar = map fromIntegral . B.unpack
 myFocusFollowsMouse = True
 myBorderWidth = 3
--- myWorkspaces    = ["\61612","\61899","\61947","\61635","\61502","\61501","\61705","\61564","\62150","\61872"]
 myWorkspaces    = ["1","2","3","4","5","6","7","8","9","10"]
---myWorkspaces    = ["I","II","III","IV","V","VI","VII","VIII","IX","X"]
 
 myBaseConfig = desktopConfig
 
@@ -72,34 +65,13 @@ myManageHook = composeAll . concat $
     , [title =? t --> doFloat | t <- myTFloats]
     , [resource =? r --> doFloat | r <- myRFloats]
     , [resource =? i --> doIgnore | i <- myIgnores]
-    -- , [(className =? x <||> title =? x <||> resource =? x) --> doShiftAndGo "\61612" | x <- my1Shifts]
-    -- , [(className =? x <||> title =? x <||> resource =? x) --> doShiftAndGo "\61899" | x <- my2Shifts]
-    -- , [(className =? x <||> title =? x <||> resource =? x) --> doShiftAndGo "\61947" | x <- my3Shifts]
-    -- , [(className =? x <||> title =? x <||> resource =? x) --> doShiftAndGo "\61635" | x <- my4Shifts]
-    -- , [(className =? x <||> title =? x <||> resource =? x) --> doShiftAndGo "\61502" | x <- my5Shifts]
-    -- , [(className =? x <||> title =? x <||> resource =? x) --> doShiftAndGo "\61501" | x <- my6Shifts]
-    -- , [(className =? x <||> title =? x <||> resource =? x) --> doShiftAndGo "\61705" | x <- my7Shifts]
-    -- , [(className =? x <||> title =? x <||> resource =? x) --> doShiftAndGo "\61564" | x <- my8Shifts]
-    -- , [(className =? x <||> title =? x <||> resource =? x) --> doShiftAndGo "\62150" | x <- my9Shifts]
-    -- , [(className =? x <||> title =? x <||> resource =? x) --> doShiftAndGo "\61872" | x <- my10Shifts]
     ]
     where
     -- doShiftAndGo = doF . liftM2 (.) W.greedyView W.shift
-    myCFloats = ["Arandr", "Arcolinux-calamares-tool.py", "Archlinux-tweak-tool.py", "flameshot", "Arcolinux-welcome-app.py", "Galculator", "feh", "mpv", "Xfce4-terminal"]
+    myCFloats = ["Arandr", "Archlinux-tweak-tool.py", "spectacle", "feh" ]
     myTFloats = ["Downloads", "Save As...","Playlist"]
     myRFloats = []
     myIgnores = ["desktop_window"]
-    -- my1Shifts = ["Chromium", "Vivaldi-stable", "Firefox"]
-    -- my2Shifts = []
-    -- my3Shifts = ["Inkscape"]
-    -- my4Shifts = []
-    -- my5Shifts = ["Gimp", "feh"]
-    -- my6Shifts = ["vlc", "mpv"]
-    -- my7Shifts = ["Virtualbox"]
-    -- my8Shifts = ["Thunar"]
-    -- my9Shifts = []
-    -- my10Shifts = ["discord"]
-
 
 myLayout = spacingRaw True (Border 2 2 2 2) True (Border 2 2 2 2) True $ avoidStruts $ smartBorders $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) $ tiled ||| Mirror tiled 
     where
@@ -140,7 +112,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_b ), spawn $ "firefox" )
   , ((modMask, xK_d ), spawn $ "discord" )
   , ((modMask, xK_m ), spawn $ "env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify" )
-  , ((noModMask, xK_Print ), spawn $ "flameshot full -c -p ~/Pictures/Screenshots" )
+  , ((noModMask, xK_Print ), spawn $ "spectacle -f -c -b" )
   , ((modMask, xK_t), withFocused $ windows . W.sink )
   , ((modMask, xK_h), prevWS )
   , ((modMask, xK_l), nextWS )
@@ -149,9 +121,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- SUPER + SHIFT KEYS
   , ((modMask .|. shiftMask , xK_r ), spawn $ "xmonad --recompile && xmonad --restart")
-  , ((modMask .|. shiftMask , xK_Return ), spawn $ "thunar")
+  , ((modMask .|. shiftMask , xK_Return ), spawn $ "dolphin")
   , ((modMask .|. shiftMask , xK_q ), kill)
-  , (( shiftMask , xK_Print ), spawn $ "flameshot gui")
+  , (( shiftMask , xK_Print ), spawn $ "spectacle --gui")
   , ((modMask .|. shiftMask , xK_l ), sendMessage  Expand)
   , ((modMask .|. shiftMask , xK_j ), windows  W.swapDown)
   , ((modMask .|. shiftMask , xK_k ), windows  W.swapUp)
@@ -161,7 +133,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- , ((mod1Mask, xK_r), spawn $ "xmonad --restart" )
 
-  , (( mod1Mask , xK_Print ), spawn $ "flameshot gui -c")
+  , (( mod1Mask , xK_Print ), spawn $ "spectacle --gui -c")
 
   --MULTIMEDIA KEYS
 
