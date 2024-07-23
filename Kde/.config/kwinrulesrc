@@ -1,0 +1,58 @@
+[$Version]
+update_info=kwinrules.upd:replace-placement-string-to-enum,kwinrules.upd:use-virtual-desktop-ids
+
+[1]
+Description=Application settings for feh
+clientmachine=localhost
+fullscreen=true
+fullscreenrule=3
+shortcut=Meta+Return
+wmclass=feh
+wmclassmatch=1
+
+[2]
+Description=Application settings for kitty
+clientmachine=localhost
+fullscreen=true
+fullscreenrule=3
+wmclass=kitty
+wmclassmatch=1
+
+[3fcd3c8e-536f-46b7-b02b-81b07c12502a]
+Description=Application settings for feh
+clientmachine=localhost
+fullscreen=true
+fullscreenrule=5
+wmclass=feh
+wmclassmatch=1
+
+[87595d3f-3e70-4bfc-b179-eb7fe987f11d]
+Description=Application settings for feh
+clientmachine=localhost
+fullscreen=true
+fullscreenrule=3
+wmclass=feh
+wmclassmatch=1
+
+[General]
+count=3
+rules=b18956ae-8045-4613-beb8-d2b3da373b1b,1,2
+
+[a5ccb591-a036-4d69-86ee-45f8a7002823]
+Description=Application settings for kitty
+clientmachine=localhost
+fullscreen=true
+fullscreenrule=3
+shortcut=Meta+Return
+shortcutrule=3
+wmclass=kitty
+wmclassmatch=1
+
+[b18956ae-8045-4613-beb8-d2b3da373b1b]
+Description=Application settings for zathura
+clientmachine=localhost
+fullscreen=true
+fullscreenrule=3
+wmclass=org.pwmt.zathura zathura
+wmclasscomplete=true
+wmclassmatch=1
