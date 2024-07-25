@@ -25,7 +25,7 @@ Handlers.setup = function()
 				min = vim.diagnostic.severity.ERROR,
 			},
 		},
-		signs = true,
+		signs = false,
 		update_in_insert = false,
 		underline = true,
 		severity_sort = true,

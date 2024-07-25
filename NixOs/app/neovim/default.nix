@@ -24,6 +24,29 @@ let
   tailwindCfg = withLuaFile ./config/nvim-lspconfig/setting/tailwindcss.lua;
 in
 {
+  nixpkgs = {
+    overlays = [
+      (final: prev: {
+        vimPlugins = prev.vimPlugins // {
+          neocodeium = prev.vimUtils.buildVimPlugin
+            {
+              name = "neocodeium";
+              src = pkgs.fetchFromGitHub {
+                owner = "monkoose";
+                repo = "neocodeium";
+                rev = "4a46f64";
+                sha256 = "yQXF9dZSSv8J+l+AYCtfDCnRKR8nBLFfVULWcv01MkY=";
+              };
+            };
+        };
+      })
+    ];
+  };
+
+  home.packages = with pkgs; [
+    codeium
+  ];
+
   programs.neovim = {
     enable = true;
     viAlias = true;
@@ -39,7 +62,6 @@ in
     plugins = with pkgs.vimPlugins;[
       nvim-web-devicons
       plenary-nvim
-      nvim-surround
       bufdelete-nvim
       vim-fugitive
       nvim-ts-autotag
@@ -109,6 +131,14 @@ in
       {
         plugin = luasnip;
         config = withLuaFile ./config/completion/luasnip.lua;
+      }
+      {
+        plugin = nvim-surround;
+        config = withLua ''require("nvim-surround").setup({})'';
+      }
+      {
+        plugin = neocodeium;
+        config = withLuaFile ./config/plugins/codeium.lua;
       }
       {
         plugin = nvim-lspconfig;
