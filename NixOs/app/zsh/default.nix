@@ -59,7 +59,7 @@ in
       autosuggestion.enable = true;
       oh-my-zsh = {
         enable = true;
-        plugins = [ "tmux" "git" "vi-mode" "fzf" ];
+        plugins = [ "tmux" "git" "vi-mode" "fzf" "kind" "aws" "docker" "gh" "golang" "kubectl" ];
       };
     };
   };

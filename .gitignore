@@ -1,4 +1,4 @@
-**/ranger/plugins/
+Ranger/**/plugins/
 
 Xmonad/.xmonad/xmonad-x86_64-linux 
 Xmonad/.xmonad/build-x86_64-linux/
@@ -14,4 +14,7 @@ Neovim/**/usage_data.json
 Neovim/**/rplugin/
 
 Tmux/**/.tmux_local.conf
+
 Zsh/**/zsh-local
+
+Btop/**/btop.log
