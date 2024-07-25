@@ -7,6 +7,8 @@
     ./app/tmux
     ./app/others.nix
     ./app/neovim
+    ./app/git.nix
+    ./app/kitty.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -31,8 +33,11 @@
     neofetch
     discord
     spotify
+    vscode
+    kitty
     obsidian
     vlc
+    gh
     (google-chrome.override {
       commandLineArgs = [
         "--enable-features=UseOzonePlatform"
