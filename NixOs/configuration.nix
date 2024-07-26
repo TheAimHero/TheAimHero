@@ -21,8 +21,10 @@
   networking = {
     hostName = "LaptopNix";
     networkmanager.enable = true;
-    nameservers = [ "8.8.8.8" ];
-    defaultGateway = "192.168.1.11";
+    nameservers = [ "8.8.8.8" "8.8.4.4" ];
+    hosts = {
+      "127.0.0.1" = [ "ticketing.dev" ];
+    };
   };
 
 
@@ -67,6 +69,16 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+    power-profiles-daemon.enable = false;
+    tlp = {
+      enable = true;
+      settings = {
+        START_CHARGE_THRESH_BAT0 = 0;
+        STOP_CHARGE_THRESH_BAT0 = 80;
+        PLATFORM_PROFILE_ON_AC = "performance";
+        PLATFORM_PROFILE_ON_BAT = "low-power";
+      };
+    };
   };
 
 
@@ -83,15 +95,25 @@
   users.users.vedant = {
     isNormalUser = true;
     description = "Vedant";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [ vscode kitty ripgrep fd go ];
+    packages = with pkgs; [
+      ripgrep
+      fd
+      go
+      kind
+      kubectl
+    ];
   };
 
   # Install firefox.
   programs = {
     firefox.enable = true;
     zsh.enable = true;
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs;[ stdenv.cc.cc.lib ];
+    };
   };
 
   # Allow unfree packages
@@ -99,24 +121,37 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    neovim
-    git
-    lf
-    gcc
-    xsel
-    nodejs
-    gnumake
-    python3
-    rustup
-    unzip
-    gzip
-    wget
-    sshfs
-    go
-  ];
+  environment = {
+    shellInit = ''
+      export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
+    '';
+    systemPackages = with pkgs; [
+      neovim
+      git
+      lf
+      gcc
+      xsel
+      nodejs
+      gnumake
+      python3
+      rustup
+      unzip
+      gzip
+      wget
+      sshfs
+    ];
+    plasma5.excludePackages = with pkgs.plasma5Packages; [
+      kate
+      okular
+      gwenview
+      elisa
+    ];
+  };
 
-  # List services that you want to enable:
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
