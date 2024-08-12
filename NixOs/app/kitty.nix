@@ -2,11 +2,10 @@
   programs.kitty = {
     enable = true;
     font = {
-      name = "JetBrainsMono Nerd Font Mono";
+      name = "JetBrainsMono Nerd Font";
       package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
       size = 12;
     };
-    theme = "Catppuccin-Macchiato";
     settings = {
       copy_on_select = "yes";
       allow_remote_control = "socket-only";

@@ -12,54 +12,53 @@
     ./app/others.nix
   ];
 
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = "vedant";
-  home.homeDirectory = "/home/vedant";
-
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "24.05"; # Please read the comment before changing.
-
-  home.packages = with pkgs; [
-    pnpm
-    lsd
-    bat
-    btop
-    neofetch
-    discord
-    spotify
-    vscode
-    kitty
-    obsidian
-    vlc
-    gh
-    (google-chrome.override {
-      commandLineArgs = [
-        "--enable-features=UseOzonePlatform"
-        "--ozone-platform=x11"
-      ];
-    })
-  ];
-
-  nixpkgs.config.allowUnfree = true;
-
-  home.file = { };
-
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    TERMINAL = "kitty";
-    VISUAL = "nvim";
-    SUDOEDIT = "nvim";
-    PAGER = "bat";
-    BROWSER = "firefox";
+  home = {
+    username = "vedant";
+    homeDirectory = "/home/vedant";
+    packages = with pkgs; [
+      pnpm
+      lsd
+      bat
+      btop
+      neofetch
+      discord
+      spotify
+      vscode
+      kitty
+      obsidian
+      vlc
+      gh
+      typescript
+      bun
+      (google-chrome.override {
+        commandLineArgs = [
+          "--enable-features=UseOzonePlatform"
+          "--ozone-platform=x11"
+        ];
+      })
+    ];
+    file = { };
+    sessionVariables = {
+      EDITOR = "nvim";
+      TERMINAL = "kitty";
+      VISUAL = "nvim";
+      SUDOEDIT = "nvim";
+      PAGER = "bat";
+      BROWSER = "firefox";
+    };
+    stateVersion = "24.05"; # Do not change this value.
   };
-
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    accent = "blue";
+    pointerCursor = {
+      enable = true;
+      flavor = "mocha";
+      accent = "blue";
+    };
+  };
+  nixpkgs.config.allowUnfree = true;
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

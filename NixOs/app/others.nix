@@ -2,8 +2,10 @@
 {
   programs = {
     zoxide.enable = true;
+    cava.enable = true;
     zathura = {
       enable = true;
+      catppuccin.enable = false;
       options = {
         recolor-lightcolor = "rgba(0, 0,0,1)";
         selection-clipboard = "clipboard";

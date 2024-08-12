@@ -130,6 +130,5 @@ in
       drawbox = true;
       preview = true;
     };
-    previewer.source = previewer;
   };
 }
