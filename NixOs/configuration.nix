@@ -51,7 +51,10 @@
   # Enable the X11 windowing system.
   services = {
     displayManager = {
-      sddm.enable = true;
+      sddm = {
+        enable = true;
+        autoNumlock = true;
+      };
     };
     xserver = {
       enable = true;
