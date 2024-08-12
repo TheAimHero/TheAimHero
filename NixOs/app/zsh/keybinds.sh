@@ -7,3 +7,5 @@ bindkey '^f' autosuggest-execute
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
+
+bindkey -M viins 'jk' vi-cmd-mode

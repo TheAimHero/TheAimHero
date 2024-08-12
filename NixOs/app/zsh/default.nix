@@ -22,7 +22,7 @@ let
     clr = "clear";
   };
   myKeybinds = builtins.readFile (./keybinds.sh);
-  myLocalConf = builtins.readFile (./zsh-local.sh);
+  myConf = builtins.readFile (./zsh-conf.sh);
 in
 {
   programs = {
@@ -40,25 +40,14 @@ in
             sha256 = "o8hgnTl84nI7jMVfA5jEcDXkMFFlnxKbRva+l/Fx4jI=";
           };
         }
-
-        {
-          name = "zap-prompt.zsh-theme";
-          file = "zap-prompt.zsh-theme";
-          src = pkgs.fetchFromGitHub {
-            owner = "zap-zsh";
-            repo = "zap-prompt";
-            rev = "7cf4762";
-            sha256 = "s6uaqI/mjtOqr8mKsKb/u+JzLxaaeItonRCRdmoZx5g=";
-          };
-        }
-
       ];
-      initExtra = builtins.concatStringsSep "\n" [ myKeybinds myLocalConf ];
+      initExtra = builtins.concatStringsSep "\n" [ myKeybinds myConf ];
       syntaxHighlighting.enable = true;
       enableCompletion = true;
       autosuggestion.enable = true;
       oh-my-zsh = {
         enable = true;
+        theme = "robbyrussell";
         plugins = [ "tmux" "git" "vi-mode" "fzf" "kind" "aws" "docker" "gh" "golang" "kubectl" ];
       };
     };
