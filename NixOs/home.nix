@@ -3,12 +3,13 @@
 {
   imports = [
     ./app/zsh
-    ./app/fzf.nix
     ./app/tmux
-    ./app/others.nix
+    ./app/lf
     ./app/neovim
+    ./app/fzf.nix
     ./app/git.nix
     ./app/kitty.nix
+    ./app/others.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
