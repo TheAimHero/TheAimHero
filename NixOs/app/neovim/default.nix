@@ -19,8 +19,9 @@ let
   lualsCfg = withLuaFile ./config/nvim-lspconfig/setting/lua_ls.lua;
   goplsCfg = withLuaFile ./config/nvim-lspconfig/setting/gopls.lua;
   jsonlsCfg = withLuaFile ./config/nvim-lspconfig/setting/jsonls.lua;
+  htmlCfg = withLuaFile ./config/nvim-lspconfig/setting/html.lua;
   yamllsCfg = withLuaFile ./config/nvim-lspconfig/setting/yamlls.lua;
-  pythonCfg = withLuaFile ./config/nvim-lspconfig/setting/basedpyright.lua;
+  pythonCfg = withLuaFile ./config/nvim-lspconfig/setting/pyright.lua;
   tailwindCfg = withLuaFile ./config/nvim-lspconfig/setting/tailwindcss.lua;
 in
 {
@@ -152,22 +153,27 @@ in
           pythonCfg
           jsonlsCfg
           yamllsCfg
+          htmlCfg
+          (defaultLspConfig "marksman")
           (defaultLspConfig "nil_ls")
-          (defaultLspConfig "eslint")
           (defaultLspConfig "golangci_lint_ls")
         ];
       }
       {
-        plugin = none-ls-nvim;
-        config = withLuaFile ./config/nvim-lspconfig/null-ls.lua;
+        plugin = conform-nvim;
+        config = withLuaFile ./config/nvim-lspconfig/conform.lua;
       }
+      {
+        plugin = nvim-lint;
+        config = withLuaFile ./config/nvim-lspconfig/nvim-lint.lua;
+      }
+
     ];
     extraPackages = with pkgs;[
       lua-language-server
       nodePackages.typescript-language-server
       clang
       clang-tools
-      basedpyright
       nil
       prettierd
       gopls
@@ -175,8 +181,12 @@ in
       nodePackages.vscode-json-languageserver
       yaml-language-server
       nixpkgs-fmt
-      golangci-lint-langserver
       golangci-lint
+      pyright
+      marksman
+      black
+      stylua
+      eslint_d
     ];
   };
 }

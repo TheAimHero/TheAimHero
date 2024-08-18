@@ -5,17 +5,17 @@ Handlers.capabilities.textDocument.completion.completionItem.snippetSupport = tr
 Handlers.capabilities = require("cmp_nvim_lsp").default_capabilities(Handlers.capabilities)
 
 Handlers.setup = function()
-  local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
-  }
-  local setup_icons = function()
-    for _, sign in ipairs(signs) do
-      vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-    end
-  end
+	local signs = {
+		{ name = "DiagnosticSignError", text = "" },
+		{ name = "DiagnosticSignWarn", text = "" },
+		{ name = "DiagnosticSignHint", text = "" },
+		{ name = "DiagnosticSignInfo", text = "" },
+	}
+	local setup_icons = function()
+		for _, sign in ipairs(signs) do
+			vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+		end
+	end
 	setup_icons()
 	vim.diagnostic.config({
 		virtual_text = {
@@ -50,13 +50,14 @@ Handlers.lsp_keymaps = function(bufnr)
 		"<cmd>lua vim.lsp.buf.implementation()<CR>",
 		{ noremap = true, silent = true, desc = "Go to Implementation" }
 	)
-	keymap(
-		bufnr,
-		"n",
-		"<leader>lf",
-		"<cmd>lua vim.lsp.buf.format{ async = true }<cr>",
-		{ noremap = true, silent = true, desc = "Format" }
-	)
+	-- @note: use conform instead
+	-- keymap(
+	-- 	bufnr,
+	-- 	"n",
+	-- 	"<leader>lf",
+	-- 	"<cmd>lua vim.lsp.buf.format{ async = true }<cr>",
+	-- 	{ noremap = true, silent = true, desc = "Format" }
+	-- )
 	keymap(
 		bufnr,
 		"n",
