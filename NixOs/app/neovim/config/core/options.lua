@@ -48,14 +48,14 @@ local options = {
 	infercase = true,
 	virtualedit = "block",
 	fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:,diff:]],
-  spelloptions = "camel",
+	spelloptions = "camel",
 	foldlevelstart = 99,
 	foldmethod = "indent",
 	foldnestmax = 10,
 	foldcolumn = "1",
 	foldlevel = 99,
 	foldenable = true,
-  laststatus = 3,
+	laststatus = 3,
 }
 for k, v in pairs(options) do
 	vim.opt[k] = v

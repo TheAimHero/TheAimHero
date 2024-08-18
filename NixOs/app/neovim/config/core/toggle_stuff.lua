@@ -69,3 +69,12 @@ keymap("n", "\\d", function()
 	diagnostics = not diagnostics
 	vim.notify(string.format("Diagnostics %s", diagnostics), lvl.INFO, { title = "Diagnostics" })
 end, { desc = "Toggle Diagnostics" })
+
+
+vim.keymap.set("n", "\\t", function()
+  local cat = require("catppuccin")
+  cat.options.transparent_background = not cat.options.transparent_background
+  cat.compile()
+  vim.cmd.colorscheme(vim.g.colors_name)
+  vim.notify(string.format("Transparent %s", cat.options.transparent_background), lvl.INFO, { title = "Transparent" })
+end)
