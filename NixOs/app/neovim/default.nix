@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, ... }:
 let
   withLua = conf: "lua << EOF\n${conf}\nEOF\n";
   withLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
@@ -39,6 +39,16 @@ in
                 sha256 = "yQXF9dZSSv8J+l+AYCtfDCnRKR8nBLFfVULWcv01MkY=";
               };
             };
+          leetcode = prev.vimUtils.buildVimPlugin
+            {
+              name = "leetcode";
+              src = pkgs.fetchFromGitHub {
+                owner = "kawre";
+                repo = "leetcode.nvim";
+                rev = "02fb2c8";
+                sha256 = "YoFRd9Uf+Yv4YM6/l7MVLMjfRqhroSS3RCmZvNowIAo=";
+              };
+            };
         };
       })
     ];
@@ -64,8 +74,12 @@ in
       nvim-web-devicons
       plenary-nvim
       bufdelete-nvim
+      nui-nvim
       vim-fugitive
-      nvim-ts-autotag
+      {
+        plugin = nvim-ts-autotag;
+        config = withLua ''require("nvim-ts-autotag").setup({})'';
+      }
       telescope-undo-nvim
       substitute-nvim
       telescope-fzf-native-nvim
@@ -140,6 +154,14 @@ in
       {
         plugin = neocodeium;
         config = withLuaFile ./config/plugins/codeium.lua;
+      }
+      {
+        plugin = diffview-nvim;
+        config = withLua "require('diffview').setup({})";
+      }
+      {
+        plugin = leetcode;
+        config = withLuaFile ./config/plugins/leetcode.lua;
       }
       {
         plugin = nvim-lspconfig;
